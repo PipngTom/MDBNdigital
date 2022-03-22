@@ -83,7 +83,7 @@ const onScrollHandler = (e) => {
 
     {books.map((item) => (
       <Card border='light' key={item.uid} style={{ cursor: 'pointer' }} onClick={() => navigate(`/editbook/${item?.uid}`)}>
-      <Card.Img variant="top" style={{ width: '350px', height: '350px' }} src={item?.url} />
+      <Card.Img variant="top" style={{ width: '350px', height: '350px'}} src={item?.url} />
       <Card.Body>
         <Card.Text className='text-center'>
           <h6>{item.author}</h6>
