@@ -78,7 +78,7 @@ const NewBookScreen = () => {
             </FormGroup>
             <FormGroup className='mb-4' controlId='synopsis'>
                 <h6>Synopsis</h6>
-                <Form.Control as='textarea' rows={6} value={synopsis} onChange={e => setSynopsis(e.target.value)} />
+                <Form.Control as='textarea' rows={8} style={{ overflow: 'hidden' }} value={synopsis} onChange={e => setSynopsis(e.target.value)} />
             </FormGroup>
             <FormGroup className='mb-4' controlId='price'>
                 <h6>Price</h6>

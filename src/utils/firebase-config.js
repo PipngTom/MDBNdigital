@@ -4,13 +4,13 @@ import { getStorage } from 'firebase/storage';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCwNQSW5RSDDFYMHWbbduU3N05vnw27fcQ",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "mbndigital-app.firebaseapp.com",
     projectId: "mbndigital-app",
     storageBucket: "mbndigital-app.appspot.com",
-    messagingSenderId: "1080719031634",
-    appId: "1:1080719031634:web:8ce653757e2b93feb4ce8b",
-    measurementId: "G-5G4KVS5MFZ"
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
   };
 
 export const app = initializeApp(firebaseConfig)

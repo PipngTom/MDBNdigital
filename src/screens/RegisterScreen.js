@@ -4,18 +4,16 @@ import FormContainer from '../components/FormContainer';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/firebase-config';
 import { Link, useNavigate } from 'react-router-dom';
-//import { useDispatch } from 'react-redux';
-//import { register } from '../actions/userActions';
+
 
 const RegisterScreen = () => {
 
-  //const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  //const [confirmPass, setConfirmPassword] = useState('')
+ 
 
   const submitHandler = async (e) => {
       e.preventDefault()
@@ -40,12 +38,8 @@ const RegisterScreen = () => {
         </Form.Group>
       <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+          <Form.Control type="password" placeholder="Password" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} required/>
       </Form.Group>
-      {/* <Form.Group className="mb-3" controlId="confirmPassword">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control type="password" placeholder="Confirm Password" value={confirmPass} onChange={(e) => setConfirmPassword(e.target.value)} required/>
-      </Form.Group> */}
       <Button type='submit' className='w-100 mt-5'>
         Register
       </Button>

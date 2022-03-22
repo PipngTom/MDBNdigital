@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -12,7 +10,6 @@ import EditBookScreen from './screens/EditBookScreen';
 
 const App = () => {
   return (
-    <Provider store={store}>
       <BrowserRouter>
       <Header/>
       <Routes>
@@ -25,7 +22,6 @@ const App = () => {
           </Route>
       </Routes>
       </BrowserRouter>
-    </Provider>
   )
 }
 

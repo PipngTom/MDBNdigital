@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import './BooksScreen.css'
 
 
+
 const db = getFirestore(app)
 
 const BooksScreen = () => {
@@ -30,7 +31,8 @@ const BooksScreen = () => {
 
   const getBooks = async () => {
     
-    const first = query(collection(db, 'books'), orderBy('name', 'asc'), limit(5));
+    
+    const first = query(collection(db, 'books'), orderBy('name', 'asc'), limit(8));
     const documentSnapshots = await getDocs(first);
     const resList = documentSnapshots.docs.map((item) => item.data())
     setBooks(resList)
@@ -49,7 +51,7 @@ const BooksScreen = () => {
       const next = query(collection(db, "books"),
      orderBy("name"),
     startAfter(lastBook),
-     limit(5));
+     limit(8));
 
      const documentSnapshots = await getDocs(next);
      const resList = documentSnapshots.docs.map((item) => item.data())
@@ -66,10 +68,10 @@ const BooksScreen = () => {
   }
 const onScrollHandler = (e) => {
   let triggerHeight = elementRef.current.scrollTop + elementRef.current.offsetHeight
-  if(triggerHeight < elementRef.current.scrollHeight){
+  if(triggerHeight >= elementRef.current.scrollHeight -1){
     getNextBooks()
   }
- // console.log(elementRef.current.scrollTop)
+ 
 }
   
 
@@ -80,13 +82,13 @@ const onScrollHandler = (e) => {
     <div  className='container' ref={elementRef} onScroll={onScrollHandler} style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-evenly', marginTop: '1rem' }}>
 
     {books.map((item) => (
-      <Card border='light' style={{ cursor: 'pointer' }} onClick={() => navigate(`/editbook/${item?.uid}`)}>
-      <Card.Img variant="top" style={{ width: '400px', height: '400px' }} src={item?.url} />
+      <Card border='light' key={item.uid} style={{ cursor: 'pointer' }} onClick={() => navigate(`/editbook/${item?.uid}`)}>
+      <Card.Img variant="top" style={{ width: '350px', height: '350px' }} src={item?.url} />
       <Card.Body>
         <Card.Text className='text-center'>
           <h6>{item.author}</h6>
           <h6>{item.name}</h6>
-          <p>{item.price}</p>
+          <span>{item.price}</span>
         </Card.Text>
       </Card.Body>
     </Card>
